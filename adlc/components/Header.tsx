@@ -52,33 +52,7 @@ const Header: React.FC = () => {
         return () => window.removeEventListener('keydown', onKey)
     }, [])
 
-    // use IntersectionObserver to update active nav based on which section is in view
-    useEffect(() => {
-        if (typeof window === 'undefined') return
-        const ids = ['home', 'about', 'policy']
-        const observerOptions: IntersectionObserverInit = {
-            root: null,
-            // trigger when section crosses center-ish of viewport
-            rootMargin: '-40% 0px -40% 0px',
-            threshold: 0
-        }
-
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                const id = (entry.target as HTMLElement).id
-                if (entry.isIntersecting) {
-                    setActive(id)
-                }
-            })
-        }, observerOptions)
-
-        ids.forEach(id => {
-            const el = document.getElementById(id)
-            if (el) observer.observe(el)
-        })
-
-        return () => observer.disconnect()
-    }, [])
+    // Note: IntersectionObserver removed — active state is controlled by clicks and scroll handlers if needed
 
     return (
         <div className='bg-[#16205B]'>
