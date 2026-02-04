@@ -10,8 +10,8 @@ const Committee: React.FC = () => {
         <div className='w-full flex flex-col mt-40 '>
 
             <div className='gap-4 p-6 sm:p-8 md:p-10 ml-10'>
-                <h1 className='font-bold text-[#16205B] text-3xl mb-4'>Meet the Interim Leadership Committee</h1>
-                <p className='font-extralight'>
+                <h1 className='font-bold text-[#16205B] text-3xl mb-4 lg:text-5xl'>Meet the Interim Leadership Committee</h1>
+                <p className='font-extralight lg:text-xl'>
                     Meet our diverse network of thought leaders shaping Africa’s future —
                     from corporate executives and researchers to artists and
                     entrepreneurs.
@@ -21,15 +21,15 @@ const Committee: React.FC = () => {
             {/* Use Tailwind grid so each child is an individual grid item */}
             <div className='w-full flex justify-center items-center align-middle p-4 sm:p-6 md:p-0 '>
                 <div className='w-full max-w-[100%] xl:max-w-[90%] flex flex-col rounded-2xl  '>
-                        <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 mt-6 justify-items-center">
-                            <div id="Jude-Kong" className="bg-gray-50 rounded-2xl shadow-xl overflow-hidden flex flex-col w-full sm:max-w-[240px]">
+                        <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8 mt-6 justify-items-center">
+                            <div id="Jude-Kong" className="bg-gray-50 rounded-2xl shadow-xl overflow-hidden flex flex-col w-full sm:max-w-[240px] lg:w-70">
                                 <div className="w-full">
                                     <Image
                                         src={Headshot}
                                         alt="Policy Mobile Background"
                                         width={350}
                                         height={160}
-                                        className="w-full sm:h-50 object-cover"
+                                        className="w-full sm:h-50 lg:h-70 object-cover"
                                     />
                                 </div>
                                 <div className='p-4 flex flex-col items-center gap-2'>
@@ -38,14 +38,14 @@ const Committee: React.FC = () => {
                                 </div>
                             </div>
 
-                            <div id="Kofi-Achampong" className="bg-gray-50 rounded-2xl shadow-xl overflow-hidden flex flex-col w-full sm:max-w-[240px]">
+                            <div id="Kofi-Achampong" className="bg-gray-50 rounded-2xl shadow-xl overflow-hidden flex flex-col w-full sm:w-70">
                                 <div className="w-full">
                                     <Image
                                         src={Headshot}
                                         alt="Kofi Achampong"
                                         width={350}
                                         height={160}
-                                        className="w-full sm:h-50 object-cover"
+                                        className="w-full sm:h-50 lg:h-70 object-cover"
                                     />
                                 </div>
                                 <div className='p-4 flex flex-col items-center gap-2'>
@@ -54,14 +54,14 @@ const Committee: React.FC = () => {
                                 </div>
                             </div>
 
-                            <div id="Minerva-Gray" className="bg-gray-50 rounded-2xl shadow-xl overflow-hidden flex flex-col w-full sm:max-w-[240px]">
+                            <div id="Minerva-Gray" className="bg-gray-50 rounded-2xl shadow-xl overflow-hidden flex flex-col w-full sm:max-w-70">
                                 <div className='w-full'>
                                     <Image
                                         src={Headshot}
                                         alt="Minerva Saddler Gray"
                                         width={350}
                                         height={160}
-                                        className="w-full sm:h-50 object-cover"
+                                        className="w-full sm:h-50 lg:h-70 object-cover"
                                     />
                                 </div>
                                 <div className='p-4 flex flex-col items-center'>
@@ -70,14 +70,14 @@ const Committee: React.FC = () => {
                                 </div>
                             </div>
 
-                            <div id="Nerissa-Allen" className="bg-gray-50 rounded-2xl shadow-xl overflow-hidden flex flex-col w-full sm:max-w-[240px]">
+                            <div id="Nerissa-Allen" className="bg-gray-50 rounded-2xl shadow-xl overflow-hidden flex flex-col w-full sm:w-70">
                                 <div className="w-full">
                                     <Image
                                         src={Headshot}
                                         alt="Nerissa Allen"
                                         width={350}
                                         height={160}
-                                        className="w-full sm:h-50 object-cover"
+                                        className="w-full sm:h-50 lg:h-70 object-cover"
                                     />
                                 </div>
                                 <div className='p-4 flex flex-col items-center gap-2'>
@@ -86,16 +86,15 @@ const Committee: React.FC = () => {
                                 </div>
                             </div>
 
-                            {/* On small screens the wrapper is `contents` so children are grid items (2-per-row). On lg it becomes a full-row flex container centering the three cards. */}
-                            <div className="contents lg:col-span-4 lg:flex lg:justify-center lg:gap-15 mt-10">
-                            <div id="Patrick-Makokoro" className={`${showAll ? 'block' : 'hidden sm:block'} bg-gray-50 rounded-2xl shadow-xl overflow-hidden flex flex-col w-full sm:max-w-[240px]`}>
+                            {/* Remaining cards — keep them as grid items so rows have consistent gaps */}
+                            <div id="Patrick-Makokoro" className={`${showAll ? 'block' : 'hidden sm:block'} bg-gray-50 rounded-2xl shadow-xl overflow-hidden flex flex-col w-full sm:max-w-[240px] lg:max-w-70`}>
                                  <div className="w-full">
                                      <Image
                                          src={Headshot}
                                          alt="Patrick Makokoro"
                                          width={350}
                                          height={160}
-                                         className="w-full sm:h-50 object-cover"
+                                         className="w-full sm:h-50 lg:h-70 object-cover"
                                      />
                                  </div>
                                  <div className='p-4 flex flex-col items-center gap-2'>
@@ -104,14 +103,14 @@ const Committee: React.FC = () => {
                                  </div>
                              </div>
 
-                            <div id="Perry-Chuinkam" className={`${showAll ? 'block' : 'hidden sm:block'} bg-gray-50 rounded-2xl shadow-xl overflow-hidden flex flex-col w-full sm:max-w-[240px]`}>
+                            <div id="Perry-Chuinkam" className={`${showAll ? 'block' : 'hidden sm:block'} bg-gray-50 rounded-2xl shadow-xl overflow-hidden flex flex-col w-full sm:max-w-[240px] lg:max-w-70`}>
                                  <div className="w-full">
                                      <Image
                                          src={Headshot}
                                          alt="Perry Chuinkam"
                                          width={350}
                                          height={160}
-                                         className="w-full sm:h-50 object-cover"
+                                         className="w-full sm:h-50 lg:h-70 object-cover"
                                      />
                                  </div>
                                  <div className='p-4 flex flex-col items-center gap-2'>
@@ -120,22 +119,21 @@ const Committee: React.FC = () => {
                                  </div>
                              </div>
 
-                            <div id="Tapfuma-Musewe" className={`${showAll ? 'block' : 'hidden sm:block'} bg-gray-50 rounded-2xl shadow-xl overflow-hidden flex flex-col w-full sm:w-80`}>
+                            <div id="Tapfuma-Musewe" className={`${showAll ? 'block' : 'hidden sm:block'} bg-gray-50 rounded-2xl shadow-xl overflow-hidden flex flex-col w-full sm:w-80 lg:w-70`}>
                                  <div className="w-full">
                                      <Image
                                          src={Headshot}
                                          alt="Tapfuma Musewe"
                                          width={350}
                                          height={160}
-                                         className="w-full sm:h-50 object-cover"
+                                         className="w-full sm:h-50 lg:h-70 object-cover"
                                      />
                                  </div>
                                  <div className='p-4 flex flex-col items-center gap-2'>
                                      <h2 className='font-bold text-[#16205B]'>Tapfuma Musewe</h2>
                                      <p className='font-extralight'>Position</p>
                                  </div>
-                             </div>
-                             </div>
+                            </div>
                              </div>
 
                         {/* Mobile-only toggle to reveal hidden members */}

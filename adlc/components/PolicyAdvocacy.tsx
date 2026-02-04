@@ -17,7 +17,7 @@ const PolicyAdvocacy = () => {
   }
 
   return (
-    <div className='w-full flex justify-center items-center p-4 sm:p-6 md:p-0'>
+    <div id="policy" className='w-full flex justify-center items-center p-4 sm:p-6 md:p-0'>
       <div className='w-full max-w-[90%] xl:max-w-[90%] flex flex-col  rounded-2xl pt-20'>
         <h1 className='text-[#16205B] text-2xl text-left sm:hidden sm:text-3xl'>What We Do</h1>
 
@@ -25,8 +25,8 @@ const PolicyAdvocacy = () => {
         <div className='flex flex-col md:flex-row mt-10 '>
 
           {/* Left column: buttons (full width on mobile, half on md+) */}
-          <div className='w-full md:w-[40%] flex flex-col items-center  '>
-            <div className="w-full sm:mt-8 flex flex-col items-center  gap-5">
+          <div className='w-full md:w-[40%] flex flex-col items-start lg:mt-20 '>
+            <div className="w-full sm:mt-8 flex flex-col items-start  gap-5">
 
               <button
                 className="box-border rounded-full border border-[#FF7300] px-6 sm:px-8 md:px-10 py-3 sm:py-4 w-full sm:w-[50%] text-base sm:text-md md:text-md text-[#000000] font-extralight shadow-md bg-white sm:bg-none transition-all duration-300 hover:text-[#FF7300] hover:shadow-lg hover:scale-105 active:scale-95"

@@ -14,6 +14,15 @@ import { LuSquareMenu } from "react-icons/lu";
 
 const Header: React.FC = () => {
     const [menuOpen, setMenuOpen] = useState(false)
+    const [active, setActive] = useState<string>('home')
+
+    const scrollToSection = (id: string) => {
+        const el = typeof document !== 'undefined' ? document.getElementById(id) : null
+        if (el) {
+            el.scrollIntoView({ behavior: 'smooth', block: 'start' })
+            setActive(id)
+        }
+    }
 
     const handleClose = (e?: React.MouseEvent) => {
         // small debug output to verify the click fires
@@ -43,12 +52,40 @@ const Header: React.FC = () => {
         return () => window.removeEventListener('keydown', onKey)
     }, [])
 
+    // use IntersectionObserver to update active nav based on which section is in view
+    useEffect(() => {
+        if (typeof window === 'undefined') return
+        const ids = ['home', 'about', 'policy']
+        const observerOptions: IntersectionObserverInit = {
+            root: null,
+            // trigger when section crosses center-ish of viewport
+            rootMargin: '-40% 0px -40% 0px',
+            threshold: 0
+        }
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                const id = (entry.target as HTMLElement).id
+                if (entry.isIntersecting) {
+                    setActive(id)
+                }
+            })
+        }, observerOptions)
+
+        ids.forEach(id => {
+            const el = document.getElementById(id)
+            if (el) observer.observe(el)
+        })
+
+        return () => observer.disconnect()
+    }, [])
+
     return (
         <div className='bg-[#16205B]'>
 
             {/* MOBILE VIEW */}
             <div className='p-3 sm:hidden'>
-                <div className='flex items-center justify-between'>
+                <div className='flex justify-between'>
                     <Image src={Logo} alt='Logo' width={150} height={20} priority />
 
                     <button
@@ -99,24 +136,24 @@ const Header: React.FC = () => {
                     </div>
 
                     <nav>
-                        <ul className='flex flex-col gap-4 mt-10'>
+                            <ul className='flex flex-col gap-4 mt-10'>
                             <li>
-                                <a href='#home' className='text-[#16205B] font-light' onClick={() => setMenuOpen(false)}>
+                                <button className={`text-[#16205B] ${active === 'home' ? 'font-bold underline' : 'font-light'}`} onClick={() => { scrollToSection('home'); setMenuOpen(false); }}>
                                     <FaHome size={25} color='#FF7300' className='inline-block mr-2' />
                                     Home
-                                </a>
+                                </button>
                             </li>
                             <li>
-                                <a href='#about' className='text-[#16205B] font-light' onClick={() => setMenuOpen(false)}>
+                                <button className={`text-[#16205B] ${active === 'about' ? 'font-bold underline' : 'font-light'}`} onClick={() => { scrollToSection('about'); setMenuOpen(false); }}>
                                     <FaInfo size={25} color='#FF7300' className='inline-block mr-2' />
                                     About Us
-                                </a>
+                                </button>
                             </li>
                             <li>
-                                <a href='#policy' className='text-[#16205B] font-light' onClick={() => setMenuOpen(false)}>
+                                <button className={`text-[#16205B] ${active === 'policy' ? 'font-bold underline' : 'font-light'}`} onClick={() => { scrollToSection('policy'); setMenuOpen(false); }}>
                                     <MdPolicy size={25} color='#FF7300' className='inline-block mr-2' />
                                     Policy Advocacy
-                                </a>
+                                </button>
                             </li>
                             <li>
                                 <a href='/calendar' className='flex items-center gap-2 text-[#16205B] font-light' onClick={() => setMenuOpen(false)}>
@@ -137,42 +174,43 @@ const Header: React.FC = () => {
             {/* lock scroll and handle Escape key (implemented via useEffect above) */}
 
             {/* DESKTOP VIEW */}
-            <div className='hidden md:block'>
-                <header className='p-7'>
-                    <div className='max-w-7xl mx-auto flex justify-between items-center'>
-                        <div>
-                            <Image src={Logo} alt='Logo' width={200} height={40} priority />
-                        </div>
+            <div className='hidden md:block pb-1 pt-5'>
+                <header>
+                    <div className='w-full flex justify-center items-center p-5 sm:p-6 md:p-0'>
+                        <div className='w-full max-w-[90%] xl:max-w-[90%] flex items-center px-4 sm:px-6'>
 
-                        <nav>
-                            <ul className='flex space-x-40'>
-                                <li>
-                                    <a href='#home' className='text-white font-extralight hover:underline hover:font-bold transition-all duration-200'>
-                                        Home
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href='#about' className='text-white font-extralight hover:underline hover:font-bold transition-all duration-200'>
-                                        About Us
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href='#policy' className='text-white font-extralight hover:underline hover:font-bold transition-all duration-200'>
-                                        Policy Advocacy
-                                    </a>
-                                </li>
-                            </ul>
-                        </nav>
+                            {/* Logo - aligned with HomeCard left edge */}
+                            <div className='shrink-0 self-end'>
+                                <Image src={Logo} alt='Logo' width={200} height={40} priority />
+                            </div>
 
-                        <div className='flex items-center gap-2'>
-                            <CiCalendar size={33} color='#FF7300' className='cursor-pointer hover:scale-110 transition-transform' />
+                            {/* Centered navigation */}
+                            <nav className='hidden md:flex flex-1 justify-start ml-20'>
+                                <ul className='flex space-x-16'>
+                                        <li>
+                                            <button onClick={() => scrollToSection('home')} className={`${active === 'home' ? 'text-white font-bold underline' : 'text-white font-extralight'} transition-all duration-200`}>Home</button>
+                                        </li>
+                                        <li>
+                                            <button onClick={() => scrollToSection('about')} className={`${active === 'about' ? 'text-white font-bold underline' : 'text-white font-extralight'} transition-all duration-200`}>About Us</button>
+                                        </li>
+                                        <li>
+                                            <button onClick={() => scrollToSection('policy')} className={`${active === 'policy' ? 'text-white font-bold underline' : 'text-white font-extralight'} transition-all duration-200`}>Policy Advocacy</button>
+                                        </li>
+                                    </ul>
+                            </nav>
 
-                            <button
-                                className='rounded-[0.625rem] bg-[#FF7300] px-4 py-2 text-sm text-white shadow-md transition-all hover:bg-[#facc15] hover:shadow-lg ml-2 font-bold'
-                                type='button'
-                            >
-                                Join Us
-                            </button>
+                            {/* Right actions - aligned with HomeCard right edge */}
+                            <div className='flex items-center gap-3'>
+                                <CiCalendar size={33} color='#FF7300' className='cursor-pointer hover:scale-110 transition-transform' />
+
+                                <button
+                                    className='rounded-[0.625rem] bg-[#FF7300] px-4 py-2 text-sm text-white shadow-md transition-all hover:bg-[#facc15] hover:shadow-lg font-bold'
+                                    type='button'
+                                >
+                                    Join Us
+                                </button>
+                            </div>
+
                         </div>
                     </div>
                 </header>

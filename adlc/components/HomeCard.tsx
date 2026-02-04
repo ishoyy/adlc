@@ -4,6 +4,7 @@ const HomeCard = () => {
 
   
   return (
+  <div className=''>
     <div id="home" className=" bg-gradient-to-b from-[#16205B]  to-white">
       <div className="w-full flex justify-center items-center p-4 sm:p-6 md:p-0">
         <div className="
@@ -15,14 +16,15 @@ const HomeCard = () => {
         ">
           {/* Title */}
           <h1 className="
-            text-2xl sm:text-3xl md:text-4xl lg:text-5xl
+            text-2xl sm:text-3xl md:text-4xl lg:text-7xl
             leading-tight
             text-center
             text-[#0c1555]
             font-semibold
             mb-0 sm:mb-15
-            max-w-full sm:max-w-[90%] md:max-w-[60%]
+            max-w-full sm:max-w-[80%] lg:max-w-[60%] md:max-w-[90%]
             px-2
+            
           ">
             Advancing Canada-Africa relations through African Diaspora leadership
           </h1>
@@ -34,7 +36,7 @@ const HomeCard = () => {
             font-light
             text-center
             mb-6 sm:mb-8 md:mb-20
-            max-w-full sm:max-w-[90%] md:max-w-[85%] lg:max-w-[60%]
+            max-w-full sm:max-w-[90%] md:max-w-[85%] lg:max-w-[50%]
             px-4
           ">
             Uniting African voices in Canada to shape policy, foster investment, and drive sustainable development across Africa.
@@ -92,6 +94,7 @@ const HomeCard = () => {
         </div>
       </div>
     </div>
+  </div>
   )
 }
 
