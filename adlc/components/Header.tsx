@@ -167,9 +167,9 @@ const Header: React.FC = () => {
                                 </a>
                             </li>
                             <li className='pt-4'>
-                                <a href='#' className='inline-block rounded-full  bg-[#FF7300] px-4 py-2 text-md text-white shadow-md transition-all hover:bg-[#facc15] hover:shadow-lg ml-2 font-bold' onClick={() => setMenuOpen(false)}>
+                                <button className='inline-block rounded-full  bg-[#FF7300] px-4 py-2 text-md text-white shadow-md transition-all hover:bg-[#facc15] hover:shadow-lg ml-2 font-bold' onClick={() => { scrollToSection('join'); setMenuOpen(false); }}>
                                     Join Us
-                                </a>
+                                </button>
                             </li>
                         </ul>
                     </nav>
@@ -213,6 +213,7 @@ const Header: React.FC = () => {
                                 <button
                                     className='rounded-[0.625rem] bg-[#FF7300] px-4 py-2 text-sm text-white shadow-md transition-all hover:bg-[#facc15] hover:shadow-lg font-bold'
                                     type='button'
+                                    onClick={() => scrollToSection('join')}
                                 >
                                     Join Us
                                 </button>

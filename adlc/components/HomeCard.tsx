@@ -1,6 +1,9 @@
+'use client'
 import React from 'react'
+import { useRouter } from 'next/navigation'
 
 const HomeCard = () => {
+  const router = useRouter()
 
   
   return (
@@ -67,6 +70,18 @@ const HomeCard = () => {
                 active:scale-95
               "
               type="button"
+              onClick={() => {
+                if (window.location.pathname === '/') {
+                  const el = document.getElementById('join')
+                  if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' })
+                } else {
+                  router.push('/#join')
+                  setTimeout(() => {
+                    const el = document.getElementById('join')
+                    if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' })
+                  }, 300)
+                }
+              }}
             >
               Become a Member
             </button>

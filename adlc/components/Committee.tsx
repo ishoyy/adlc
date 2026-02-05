@@ -22,7 +22,7 @@ const Committee: React.FC = () => {
             <div className='w-full flex justify-center items-center align-middle p-4 sm:p-6 md:p-0 '>
                 <div className='w-full max-w-[100%] xl:max-w-[90%] flex flex-col rounded-2xl  '>
                         <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8 mt-6 justify-items-center">
-                            <div id="Jude-Kong" className="bg-gray-50 rounded-2xl shadow-xl overflow-hidden flex flex-col w-full sm:max-w-[240px] lg:w-70">
+                            <div id="Jude-Kong" className="bg-gray-50 rounded-2xl shadow-xl overflow-hidden flex flex-col w-full sm:w-70 lg:w-70">
                                 <div className="w-full">
                                     <Image
                                         src={Headshot}
@@ -103,6 +103,7 @@ const Committee: React.FC = () => {
                                  </div>
                              </div>
 
+        
                             <div id="Perry-Chuinkam" className={`${showAll ? 'block' : 'hidden sm:block'} bg-gray-50 rounded-2xl shadow-xl overflow-hidden flex flex-col w-full sm:max-w-[240px] lg:max-w-70`}>
                                  <div className="w-full">
                                      <Image
