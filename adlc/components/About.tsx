@@ -19,7 +19,7 @@ const About = () => {
 
                     <div className=''>
                     <p className='font-extralight pb-10 lg:text-xl'>The African Diaspora Leaders Coalition (ADLC) is a dynamic alliance of African-descended professionals in Canada — including investors, academics, artists, athletes, and corporate leaders — committed to advancing African affairs through strategic collaboration with the Government of Canada and the private sector.</p>
-                    <p className='font-extralight pb-10 lg:text-xl'>We serve as a platform to amplify diaspora leadership, design impactful policies, and unlock opportunities for mutual growth between Canada and Africa.</p>
+                    <p className='font-extralight pb-10 lg:text-xl'>We serve as a platform to amplify Diaspora leadership, design impactful policies, and unlock opportunities for mutual growth between Canada and Africa.</p>
 
                     <Image
                         src={AboutIMG}

@@ -19,7 +19,7 @@ const JoinForm = () => {
         shadow-xl gap-10 relative z-40 -mb-50 md:-mb-20 lg:-mb-42'>
                     <div className='flex justify-center flex-col sm:w-[70%]'>
                         <h1 className='font-bold text-[#16205B] text-2xl sm:text-3xl self-center mb-10 lg:text-5xl'>Join the Movement</h1>
-                        <p className='font-extralight text-center sm:text-xl'>ADLC is a recognized non-profit organization dedicated to creating a new framework for diaspora-led diplomacy and development.
+                        <p className='font-extralight text-center sm:text-xl'>ADLC is a recognized non-profit organization dedicated to creating a new framework for Diaspora-led diplomacy and development.
                             Join our growing alliance to define the next chapter of Africa-Canada relations.</p>
                     </div>
                     <Form />
