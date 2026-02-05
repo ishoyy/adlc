@@ -5,13 +5,11 @@ import { Header, HomeCard, PolicyAdvocacy, About, Committee, JoinForm} from "../
 export default function Home() {
   return (
     <div>
-              <Header />
 
       <HomeCard/>
       <About />
       <PolicyAdvocacy/>
       <Committee/>
-              <JoinForm />
 
       </div>
   )

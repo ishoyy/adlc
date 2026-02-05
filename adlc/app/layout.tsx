@@ -29,7 +29,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${geistSans.variable} ${geistMono.variable} min-h-screen flex flex-col`}>
+        <Header />
         <div className="flex-grow">{children}</div>
+        <JoinForm/>
       </body>
 
     </html>
