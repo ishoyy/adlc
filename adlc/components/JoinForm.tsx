@@ -72,6 +72,7 @@ const JoinForm = () => {
                         <p>Blog</p>
                         <p>Resources</p>
                     </div>
+
                     <div className='sm:w-[90%] flex justify-center sm:justify-end items-center gap-10 mt-8 sm:mt-0 mb-7'>
                         <Image src={Linkedin} alt="LinkedIn" width={24} height={24} className='sm:h-6 h-10 w-auto' priority />
                         <Image src={X} alt="X" width={24} height={24} className='sm:h-6 h-10 w-auto' priority />
@@ -79,9 +80,13 @@ const JoinForm = () => {
                     </div>
 
                     <div className='w-[90%] border-t border-white'></div>
-                    <div className='w-[90%] flex justify-end mt-4'>
+
+                    <div className='w-[90%] flex justify-between  mt-4 '>
+                <p className='text-white font-extralight flex justify-self-start'>Designed by Wouessi Inc.</p>
+
                         <p className='text-white font-extralight text-center sm:text-left'>© 2025 African Diaspora Leaders Coalition – All Rights Reserved</p>
                     </div>
+
                 </div>
 
 
