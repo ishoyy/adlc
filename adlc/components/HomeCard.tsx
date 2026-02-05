@@ -5,7 +5,7 @@ const HomeCard = () => {
   
   return (
   <div className=''>
-    <div id="home" className=" bg-gradient-to-b from-[#16205B]  to-white">
+    <div id="home" className=" bg-gradient-to-b from-[#16205B]  to-white ">
       <div className="w-full flex justify-center items-center p-4 sm:p-6 md:p-0">
         <div className="
           w-full max-w-[90%]  xl:max-w-[90%]

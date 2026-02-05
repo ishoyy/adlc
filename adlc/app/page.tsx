@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { HomeCard, PolicyAdvocacy, About, Committee, JoinForm, Footer} from "../components/index"
+import { HomeCard, PolicyAdvocacy, About, Committee, JoinForm} from "../components/index"
 
 
 export default function Home() {
@@ -9,7 +9,6 @@ export default function Home() {
       <About />
       <PolicyAdvocacy/>
       <Committee/>
-      <Footer />
       </div>
   )
 }

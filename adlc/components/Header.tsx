@@ -5,6 +5,7 @@ import Image from 'next/image'
 import { CiCalendar } from 'react-icons/ci'
 import MenuIcon from '../public/menu.png'
 import { useEffect } from 'react'
+import { useRouter } from 'next/navigation'
 import { IoIosClose } from "react-icons/io";
 import { FaHome } from "react-icons/fa";
 import { FaInfo } from "react-icons/fa";
@@ -13,15 +14,45 @@ import { LuSquareMenu } from "react-icons/lu";
 
 
 const Header: React.FC = () => {
+    const router = useRouter()
     const [menuOpen, setMenuOpen] = useState(false)
     const [active, setActive] = useState<string>('home')
 
     const scrollToSection = (id: string) => {
-        const el = typeof document !== 'undefined' ? document.getElementById(id) : null
+        if (typeof document === 'undefined') return
+        // If targeting the top of the page, scroll to window top instead of an element
+        if (id === 'home') {
+            // If already on the same page, just scroll to top
+            if (window.location.pathname === '/') {
+                window.scrollTo({ top: 0, behavior: 'smooth' })
+                setActive('home')
+                return
+            }
+
+            // Navigate to home then scroll to top
+            router.push('/')
+            setActive('home')
+            setTimeout(() => window.scrollTo({ top: 0, behavior: 'smooth' }), 250)
+            return
+        }
+
+        const el = document.getElementById(id)
         if (el) {
             el.scrollIntoView({ behavior: 'smooth', block: 'start' })
             setActive(id)
+            return
         }
+
+        // Not on the same page (e.g., user is on /calendar). Navigate to home with hash then try to scroll.
+        const target = `/#${id}`
+        router.push(target)
+        setActive(id)
+
+        // Attempt to scroll after navigation — small delay to allow the page to render.
+        setTimeout(() => {
+            const el2 = document.getElementById(id)
+            if (el2) el2.scrollIntoView({ behavior: 'smooth', block: 'start' })
+        }, 250)
     }
 
     const handleClose = (e?: React.MouseEvent) => {
@@ -148,7 +179,7 @@ const Header: React.FC = () => {
             {/* lock scroll and handle Escape key (implemented via useEffect above) */}
 
             {/* DESKTOP VIEW */}
-            <div className='hidden md:block pb-1 pt-5'>
+            <div className='hidden md:block pb-2 pt-5'>
                 <header>
                     <div className='w-full flex justify-center items-center p-5 sm:p-6 md:p-0'>
                         <div className='w-full max-w-[90%] xl:max-w-[90%] flex items-center px-4 sm:px-6'>
@@ -174,8 +205,10 @@ const Header: React.FC = () => {
                             </nav>
 
                             {/* Right actions - aligned with HomeCard right edge */}
-                            <div className='flex items-center gap-3'>
-                                <CiCalendar size={33} color='#FF7300' className='cursor-pointer hover:scale-110 transition-transform' />
+                            <div className='flex items-center gap-3 '>
+                                <a href='/calendar'>
+                                    <CiCalendar size={33} color='#FF7300' className='cursor-pointer hover:scale-110 transition-transform' />
+                                </a>
 
                                 <button
                                     className='rounded-[0.625rem] bg-[#FF7300] px-4 py-2 text-sm text-white shadow-md transition-all hover:bg-[#facc15] hover:shadow-lg font-bold'

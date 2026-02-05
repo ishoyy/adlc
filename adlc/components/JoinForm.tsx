@@ -7,7 +7,7 @@ import X from '../public/social-icons/X.png'
 const JoinForm = () => {
     return (
         <div>
-            <div className='w-full flex justify-center items-center p-4 sm:p-6 md:p-0 mt-50'>
+            <div className='w-full flex justify-center items-center p-4 sm:p-6 md:p-0 mt-10 sm:mt-50'>
             <div className=' w-full h-fit max-w-[90%]  xl:max-w-[90%]
         p-6 sm:p-8 md:p-10 lg:p-12 lg:pb-30
         flex flex-col items-center
