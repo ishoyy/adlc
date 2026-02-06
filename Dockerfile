@@ -1,4 +1,3 @@
-# syntax=docker/dockerfile:1
 FROM node:20-bullseye AS builder
 WORKDIR /app
 ENV NODE_ENV=development
@@ -12,13 +11,14 @@ FROM node:20-bullseye-slim AS runner
 WORKDIR /app
 ENV NODE_ENV=production
 ENV PORT=3000
+ENV HOST=0.0.0.0
+# persistent sqlite data
 RUN mkdir -p /data && chown -R node:node /data
-COPY --from=builder /app/package.json /app/package-lock.json ./
-RUN npm ci --omit=dev
-COPY --from=builder /app/.next ./.next
+# copy minimal standalone app output
+COPY --from=builder /app/.next/standalone ./
+COPY --from=builder /app/.next/static ./.next/static
 COPY --from=builder /app/public ./public
-COPY --from=builder /app/next.config.ts ./next.config.ts
 USER node
 EXPOSE 3000
 VOLUME ["/data"]
-CMD ["npm","run","start"]
+CMD ["node","server.js"]
