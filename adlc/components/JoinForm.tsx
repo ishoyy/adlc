@@ -82,9 +82,9 @@ const JoinForm = () => {
                     <div className='w-[90%] border-t border-white'></div>
 
                     <div className='w-[90%] flex justify-between  mt-4 '>
-                <p className='text-white font-extralight flex justify-self-start'>Designed by Wouessi Inc.</p>
+                <a className='text-white font-extralight flex justify-self-start' href="https://wouessi.com">Designed by Wouessi Inc.</a>
 
-                        <p className='text-white font-extralight text-center sm:text-left'>© 2025 African Diaspora Leaders Coalition – All Rights Reserved</p>
+                        <p className='text-white font-extralight text-center sm:text-left'>© 2026 African Diaspora Leaders Coalition – All Rights Reserved</p>
                     </div>
 
                 </div>

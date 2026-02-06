@@ -17,7 +17,7 @@ const Calendar = () => {
           shadow-xl
         ">
       <div className='w-full max-w-[90%] xl:max-w-[90%]'>
-  <h1 className='text-2xl font-bold text-[#16205B] mb-4 lg:text-4xl mb-5'>Events</h1>
+  <h1 className='text-2xl font-bold text-[#16205B] mb-5 flex justify-center lg:text-5xl '>Events</h1>
 
         {/* Responsive iframe: full width of container, taller on larger screens */}
         <div className='w-full'>

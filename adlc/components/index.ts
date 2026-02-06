@@ -5,11 +5,13 @@ import About from './About'
 import Committee from './Committee'
 import JoinForm from './JoinForm'
 import Form from './Form'
+import LoginForm from './admin/LoginForm'
 export {
   
     Header,
     HomeCard,
     PolicyAdvocacy,
+    LoginForm,
     About,
     Committee,
     JoinForm,
