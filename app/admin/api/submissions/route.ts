@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
-import db from "@/lib/data/db";
 
 export const runtime = "nodejs";
+export const dynamic = "force-dynamic";
 
 // POST /api/submissions
 export async function POST(req: Request) {
@@ -15,6 +15,8 @@ export async function POST(req: Request) {
       );
     }
 
+    const { getDb } = await import("@/lib/data/db");
+    const db = getDb();
     const stmt = db.prepare(`
       INSERT INTO members (name, email, message)
       VALUES (?, ?, ?)
@@ -23,10 +25,9 @@ export async function POST(req: Request) {
     stmt.run(name, email, message);
 
     return NextResponse.json({ success: true });
-  } catch (err: any) {
-    console.error("DB ERROR:", err);
+  } catch (err: unknown) {
     return NextResponse.json(
-      { error: err.message ?? "Server error" },
+      { error: err instanceof Error ? err.message : "Server error" },
       { status: 500 }
     );
   }
@@ -34,6 +35,8 @@ export async function POST(req: Request) {
 
 // GET /api/submissions
 export async function GET() {
+  const { getDb } = await import("@/lib/data/db");
+  const db = getDb();
   const stmt = db.prepare(`
     SELECT * FROM members
     ORDER BY datecreated DESC
