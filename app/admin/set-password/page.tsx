@@ -63,7 +63,7 @@ export default function Page() {
 
                  
                   <div className="flex justify-center flex-col items-center ">
-                    <button type="button" onClick={() => handleSubmit()} className="rounded-xl bg-[#16205B] mt-4 px-6 py-2  md:w-auto text-md text-white font-semibold shadow-md transition-all duration-300 hover:bg-[#0f1a4a] active:scale-95" disabled={isSubmitting}>{isSubmitting ? 'Sending Reset Link…' : 'Send Reset Link'}</button>
+                    <button type="button" className="rounded-xl bg-[#16205B] mt-4 px-6 py-2  md:w-auto text-md text-white font-semibold shadow-md transition-all duration-300 hover:bg-[#0f1a4a] active:scale-95" disabled={isSubmitting}>{isSubmitting ? 'Sending Reset Link…' : 'Send Reset Link'}</button>
                     <Link href="/admin/login" className="ml-4 rounded-xl bg-gray-300 mt-4 px-6 py-2 md:w-auto text-md">Back to Login</Link>
                   </div>
 
