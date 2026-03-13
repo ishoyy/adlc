@@ -44,3 +44,12 @@ next-env.d.ts
 /data
 .env.loca.
 *.db
+/better-aut-migrations/*.sql
+
+# ── Session / secret files ────────────────────────────────────────────────────
+*.session.sql
+*.pem
+
+# ── OS / editor ───────────────────────────────────────────────────────────────
+.DS_Store
+Thumbs.db
