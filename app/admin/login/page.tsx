@@ -4,12 +4,10 @@ import React, { useRef, useState, useEffect } from 'react'
 import Image from 'next/image'
 import StockAdmin from '../../../public/stockadmin.jpg'
 import LogoIcon from "../../../public/logo-icon.png"
-import { signInAction, signUpAction } from '@/app/actions/auth'
+import { signIn } from '@/lib/auth-client'
 import { z } from 'zod'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
-// avoid useSearchParams/usePathname during prerender — use window.location instead
-import { IoIosClose } from "react-icons/io";
 import { IoIosHome } from "react-icons/io";
 import Link from 'next/link'
 
@@ -53,29 +51,24 @@ export default function Page() {
   const { register, handleSubmit, formState: { errors } } = useForm<FormFields>({ resolver: zodResolver(schema) })
 
   const onValid = (values: FormFields) => {
-    // values are validated; call the API route to sign in, then navigate on success
     setIsSubmitting(true)
-      ; (async () => {
-        try {
-          const res = await fetch('/api/auth/signin', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(values),
-          })
-          const json = await res.json()
-          if (!json.ok) {
-            setServerError(json.error || 'Sign-in failed')
-            setIsSubmitting(false)
-            return
-          }
-          // success -> client-side navigation
-          // use window navigation to avoid next/navigation hooks during prerender
-          window.location.assign('/admin/dashboard')
-        } catch (err) {
-          setServerError('Network error')
+    ;(async () => {
+      try {
+        const result = await signIn.email({
+          email: values.email,
+          password: values.password,
+        })
+        if (result.error) {
+          setServerError(result.error.message || 'Sign-in failed')
           setIsSubmitting(false)
+          return
         }
-      })()
+        window.location.assign('/admin/dashboard')
+      } catch (err) {
+        setServerError('Network error')
+        setIsSubmitting(false)
+      }
+    })()
   }
 
   const onInvalid = () => {

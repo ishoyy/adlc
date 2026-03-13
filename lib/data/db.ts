@@ -10,8 +10,8 @@ export function getDb() {
   const Database = require("better-sqlite3");
   const isProd = process.env.NODE_ENV === "production";
   const dbPath = isProd
-    ? "/data/database.db"
-    : path.join(process.cwd(), "lib/data/database.db");
+    ? "/data/members.db"
+    : path.join(process.cwd(), "lib/data/members.db");
   const dir = path.dirname(dbPath);
   if (!fs.existsSync(dir)) {
     fs.mkdirSync(dir, { recursive: true });

@@ -6,6 +6,7 @@ import Committee from './Committee'
 import JoinForm from './JoinForm'
 import Form from './Form'
 import LoginForm from './admin/LoginForm'
+import ResetPasswordForm from './emails/reset-password'
 export {
   
     Header,
@@ -15,5 +16,6 @@ export {
     About,
     Committee,
     JoinForm,
-    Form
+    Form,
+    ResetPasswordForm
 }

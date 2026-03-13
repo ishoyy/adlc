@@ -1,0 +1,1 @@
+SELECT * FROM user WHERE email = 'admin@adlc.com';
