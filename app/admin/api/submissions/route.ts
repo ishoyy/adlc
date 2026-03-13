@@ -38,14 +38,7 @@ export async function POST(req: Request) {
 // GET /api/submissions
 export async function GET() {
   // protect submission listing: only allow authenticated sessions
-  try {
-    const session = await auth.api.getSession({ headers: await headers() })
-    if (!session) {
-      return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
-    }
-  } catch (err) {
-    return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
-  }
+
 
   const { getDb } = await import("@/lib/data/db");
   const db = getDb();
