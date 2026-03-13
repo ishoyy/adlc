@@ -34,9 +34,22 @@ function createAuth() {
   const appBase = process.env.BETTER_AUTH_URL ||
     process.env.NEXT_PUBLIC_BASE_URL ||
     "http://localhost:3000";
+  
+  // Build trusted origins list based on environment
+  const trustedOrigins = [appBase];
+  
+  // Only add localhost variants in development
+  if (process.env.NODE_ENV === "development") {
+    trustedOrigins.push(
+      "http://localhost:3000",
+      "http://localhost:3001",
+      "http://127.0.0.1:3000"
+    );
+  }
+
   return betterAuth({
     database: getDb(),
-    trustedOrigins: [appBase],
+    trustedOrigins,
     baseURL: appBase,
 
     advanced: {
@@ -45,6 +58,7 @@ function createAuth() {
       crossSubDomainCookies: {
         enabled: false,
       },
+      allowCredentialsOnCrossOrigin: true,
     },
     emailAndPassword: {
       enabled: true,
